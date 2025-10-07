@@ -1,0 +1,154 @@
+/* Live2D 移动端优化样式 */
+
+/* 主容器 - 缩小尺寸，避免遮挡内容 */
+#waifu {
+  bottom: 10px !important;
+  left: 0 !important;
+  right: auto !important;
+  line-height: 0;
+  margin-bottom: 0;
+  position: fixed;
+  transform-origin: left bottom;
+  z-index: 998 !important;
+  pointer-events: auto;
+  width: 150px !important;  /* 移动端缩小 */
+  height: 200px !important;
+}
+
+/* Live2D画布 - 适配小屏幕 */
+#waifu #live2d {
+  position: relative;
+  width: 150px !important;
+  height: 200px !important;
+}
+
+/* 工具栏 - 移动端优化 */
+#waifu-tool {
+  color: #aaa;
+  opacity: 0.8;
+  position: absolute;
+  right: -30px;  /* 放在模型右侧 */
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+}
+
+#waifu-tool span {
+  display: block;
+  cursor: pointer;
+  color: #5b6c7d;
+  transition: 0.2s;
+  margin: 8px 0;
+  font-size: 16px;  /* 增大按钮，方便触摸 */
+  padding: 4px;
+}
+
+#waifu-tool span:hover {
+  color: #34495e;
+  transform: scale(1.1);
+}
+
+/* 对话框 - 移动端优化 */
+#waifu-tips {
+  opacity: 0;
+  width: 180px !important;  /* 缩小宽度 */
+  height: auto;
+  min-height: 50px;
+  max-height: 100px;
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid rgba(224, 186, 140, 0.62);
+  border-radius: 12px;
+  background-color: rgba(236, 217, 188, 0.5);
+  color: #916946;
+  font-size: 12px !important;  /* 缩小字体 */
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  position: absolute;
+  animation-delay: 5s;
+  animation-duration: 50s;
+  animation-iteration-count: infinite;
+  animation-name: shake;
+  animation-timing-function: ease-in-out;
+  word-break: break-all;
+  /* 定位在模型上方 */
+  bottom: 210px;
+  left: 0;
+  right: auto;
+}
+
+/* 隐藏按钮 - 移动端放在右上角 */
+#waifu #waifu-toggle {
+  background-color: #fa0;
+  border-radius: 5px;
+  bottom: auto;
+  top: 10px;
+  right: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  opacity: 0.8;
+  padding: 5px 8px;
+  position: fixed;
+  transition: 0.3s;
+  width: auto;
+  writing-mode: horizontal-tb;
+  z-index: 999;
+}
+
+#waifu #waifu-toggle:hover {
+  opacity: 1;
+}
+
+#waifu #waifu-toggle.waifu-toggle-active {
+  opacity: 1;
+}
+
+/* 隐藏状态 */
+#waifu.waifu-hidden {
+  transform: translateX(-100%);
+}
+
+/* 触摸优化 - 增大可点击区域 */
+#waifu::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  z-index: -1;
+}
+
+/* 横屏模式优化 */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  #waifu {
+    width: 120px !important;
+    height: 160px !important;
+    bottom: 5px !important;
+  }
+  
+  #waifu #live2d {
+    width: 120px !important;
+    height: 160px !important;
+  }
+  
+  #waifu-tips {
+    bottom: 170px;
+    font-size: 11px !important;
+  }
+}
+
+/* 小屏幕进一步优化 */
+@media screen and (max-width: 375px) {
+  #waifu {
+    width: 120px !important;
+    height: 160px !important;
+  }
+  
+  #waifu #live2d {
+    width: 120px !important;
+    height: 160px !important;
+  }
+}
