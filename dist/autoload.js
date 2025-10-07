@@ -5,7 +5,7 @@
 
 // Recommended to use absolute path for live2d_path parameter
 // live2d_path 参数建议使用绝对路径
-const live2d_path = 'https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.0-rc.6/dist/';
+const live2d_path = 'https://cdn.jsdmirror.com/npm/live2d-widgets@1.0.0-rc.6/dist/';
 // const live2d_path = '/dist/';
 
 // Method to encapsulate asynchronous resource loading
@@ -35,9 +35,9 @@ function loadExternalResource(url, type) {
 (async () => {
   // If you are concerned about display issues on mobile devices, you can use screen.width to determine whether to load
   // 如果担心手机上显示效果不佳，可以根据屏幕宽度来判断是否加载
-  // if (screen.width < 768) return;
+   if (screen.width < 768) return;
 
-  // Avoid cross-origin issues with image resources
+   Avoid cross-origin issues with image resources
   // 避免图片资源跨域问题
   const OriginalImage = window.Image;
   window.Image = function(...args) {
